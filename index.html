@@ -1,0 +1,136 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <link href="assets/ui/ui.css" rel="stylesheet" type="text/css" />
+    <link href="assets/ui/card.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+    <script src="assets/game/app.js"></script>
+    <div id="window">
+        <div id="arena" class="selecting">
+            <div id="prompt"></div>
+            <div id="consult"></div>
+            <!--
+            <div class="status" status-character-position="player">-----出牌阶段-----</div>
+            <div class="status" status-character-position="rival_player">-----出牌阶段-----</div>
+            -->
+            <!--
+            <div class="cardDiscarding" discardCards-position="player" discarding="false">
+                <div class="cardBack"></div>
+            </div>
+            <div class="cardDiscarding" discardCards-position="rival_player" discarding="false">
+                <div class="cardBack"></div>
+            </div>
+            -->
+            <!--
+            <div class="cardDealing" dealCard-position="player" discarding="false">
+                <div class="cardBack"></div>
+            </div>
+            <div class="cardDealing" dealCard-position="rival_player" discarding="false">
+                <div class="cardBack"></div>
+            </div>
+            -->
+            <div id="dock">
+                <div id="dockLeft" class="dockLeft" card-number="0"></div>
+                <div id="dockRight" class="dockRight" card-number="0"></div>
+                <!--<div>间不能有回车，否则计算其子节点时会计算div的文本结点，输出#text-->
+            </div>
+            <div class="player" character-position="player" target="false" hurted="false">
+                <div class="avatar" avatar-position="player" style="background-image: url(assets/image/character/standard/liubei.jpg);">
+                    <div class="identity" data-color="zhu">
+                        <div>主</div>
+                    </div>
+                    <div class="cardnum" num-condition="low" card-position="player">0</div>
+                    <div class="hp" hp-condition="high" hp-position="player">
+                        <div class=""></div>
+                        <div class=""></div>
+                        <div class=""></div>
+                        <div class=""></div>
+                        <!--<div class="lost"></div>-->
+                    </div>
+                    <div class="name" data-color="zhu">
+                        <div>刘</div>
+                        <div>备</div>
+                    </div>
+                    <!--<div class="lose" lose-position="player">败北</div>-->
+                    <!--<div class="equipBar">青龙偃月刀</div>-->
+                </div>
+            </div>
+            <div class="player" character-position="rival_player" target="false" hurted="false">
+                <div class="avatar" avatar-position="rival_player" style="background-image: url(assets/image/character/standard/sunquan.jpg);" >
+                    <div class="identity" data-color="fan">
+                        <div>反</div>
+                    </div>
+                    <div class="cardnum" num-condition="high" card-position="rival_player">3</div>
+                    <div class="hp" hp-condition="high" hp-position="rival_player">
+                        <div class=""></div>
+                        <div class=""></div>
+                        <div class=""></div>
+                        <div class=""></div>
+                        <!--<div class="lost"></div>-->
+                    </div>
+                    <div class="name" data-color="fan">
+                        <div>孙</div>
+                        <div>权</div>
+                    </div>
+                </div>
+            </div>
+            <!--<div class="word" word-type="JinNang">过河拆桥</div>-->
+
+            <div id="console" console-position="rival_player">
+                <input type="button" onclick="dealCardAnimation_Rival(4);" value="发牌动画"/>
+                <input type="button" onclick="discardCardAnimation_Rival(4);" value="弃牌动画"/>
+                <input type="button" onclick="useCardAnimation_Rival();" value="出牌效果"/>
+                <input type="button" onclick="lineAnimation_rival();" value="引导线"/>
+                <input type="button" onclick="wordAnimation_Rival('闪');" value="文字特效"/>
+                <input type="button" onclick="removeWordAnimation_Rival();" value="去文字特效"/>
+                <input type="button" onclick="showStatus_Rival('出牌');" value="咨询槽"/>
+                <input type="button" onclick="removeStatus_Rival();" value="去咨询槽"/>
+                <input type="button" onclick="equipAnimation_Rival('青龙偃月刀');" value="装备"/>
+                <input type="button" onclick="set_RivalCards(1);" value="更换手牌数目"/>
+                <input type="button" onclick="hurtedAnimation_Rival();" value="受伤"/>
+                <input type="button" onclick="addHP_Rival();" value="加血"/>
+                <!--<input type="button" onclick="subHP_Rival();" value="减血"/>-->
+                <input type="button" onclick="deadAnimation_Rival();" value="死亡"/>
+                <input type="button" onclick="showWin();" value="胜出"/>
+                <input type="button" onclick="showLose();" value="败北"/>
+
+            </div>
+            <div id="console" console-position="player">
+                <input type="button" onclick="jsonAnalysis();" value="发牌"/>
+                <!--<input type="button" onclick="discardCardAnimation(3);" value="弃牌动画"/>-->
+                <input type="button" onclick="remove_Word();" value="去文字特效"/>
+                <!--<input type="button" onclick="remove_Consult_EndRound();" value="去咨询槽"/>-->
+                <input type="button" onclick="hurted_Animation();" value="受伤"/>
+                <input type="button" onclick="dead_Animation();" value="死亡"/>
+                <!--<input type="button" onclick="hp_Add();" value="加血"/>-->
+            </div>
+        </div>
+
+    </div>
+
+
+</body>
+</html>
+
+<!--  卡牌结构
+    <div id="dockLeft" class="handcardsLeft" card-number="7">
+        <div class="card" >
+            <div class="cardImage" style="background-image: url(assets/image/card/standard/sha.png);"></div>
+            <div class="info red"></div>
+            <div class="cardName">杀</div>
+            <div class="cardBack">杀</div>   卡牌背面
+            <div class="cardIntro"></div>
+        </div>
+        <div class="cardDealing" >
+            <div class="cardImage" style="background-image: url(assets/image/card/standard/sha.png);"></div>
+            <div class="info red"></div>
+            <div class="cardName">杀</div>
+            <div class="cardBack">杀</div>   卡牌背面
+            <div class="cardIntro"></div>
+        </div>
+    </div>
+-->

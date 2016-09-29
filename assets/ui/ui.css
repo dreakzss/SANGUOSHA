@@ -1,0 +1,703 @@
+
+
+html{
+    font-size: 16px;
+    cursor: default;
+    -webkit-user-select:none;
+    -webkit-font-smoothing: subpixel-antialiased;
+    -webkit-tap-highlight-color:rgba(0,0,0,0);
+}
+
+div{
+    display: inline-block;
+    position: absolute;
+    transition: all 0.5s;
+}
+
+
+/*---------------背景---------------*/
+html{
+    background:url('../theme/background.jpg') no-repeat center center fixed;
+    -webkit-background-size:cover;
+    -moz-background-size:cover;
+    -o-background-size:cover;
+    background-size:cover;
+}
+#window{
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    transition-property:opacity;
+    overflow:hidden
+}
+
+
+
+/*---------------卡牌区域---------------*/
+#arena{
+    width:90%;
+    height: 90%;
+    top: calc(5% + 10px);
+    left: 5%;
+}
+#arena.right{
+    left:240px;
+    opacity: 0.6;
+}
+#arena.left{
+    left:calc(10% - 240px);
+    opacity: 0.6;
+}
+#arena.top{
+    top:-100%;
+}
+
+
+
+/*---------------提醒槽---------------*/
+.status{
+    font-family: sans-serif;
+    font-size: 14px;
+    left: calc(50% - 48px);
+    color: white;
+    -webkit-animation: statusloading 0.70s;
+}
+.status[status-character-position='player']{
+    top: calc(100% - 6px);
+}
+.status[status-character-position='player']{
+    text-shadow:
+    rgba(3, 3, 3, 1) 0 0 2px,
+    rgba(65, 51, 51, 1) 0 0 3px,
+    rgba(158, 133, 133, 1) 0 0 5px,
+    rgba(255, 255, 255, 1) 0 0 5px,
+    rgba(255, 255, 255, 1) 0 0 9px,
+    rgba(255, 255, 255, 1) 0 0 9px;
+}
+.status[status-character-position='rival_player']{
+    bottom: calc(100% - 203px);
+}
+.status[status-character-position='rival_player']{
+    text-shadow:
+    rgba(3, 3, 3, 1) 0 0 2px,
+    rgba(65, 51, 51, 1) 0 0 3px,
+    rgba(158, 133, 133, 1) 0 0 5px,
+    rgba(255, 255, 255, 1) 0 0 5px,
+    rgba(255, 255, 255, 1) 0 0 9px,
+    rgba(255, 255, 255, 1) 0 0 9px;
+}
+@-webkit-keyframes statusloading{
+    from {
+        opacity: 0;
+    }
+}
+
+
+/*---------------提醒槽---------------*/
+#prompt{
+    font-size: 20px;
+    bottom: 220px;
+    height: 40px;
+    width: 100%;
+    color: white;
+    text-align: center;
+    -webkit-animation: alertloading 0.75s;
+}
+#prompt{
+    text-shadow:
+    rgba(3, 3, 3, 1) 0 0 2px,
+    rgba(65, 51, 51, 1) 0 0 5px,
+    rgba(158, 133, 133, 1) 0 0 10px,
+    rgba(252, 252, 252, 1) 0 0 10px,
+    rgba(255, 255, 255, 1) 0 0 20px,
+    rgba(255, 255, 255, 1) 0 0 20px;
+}
+/*---咨询槽加载动画---*/
+@-webkit-keyframes alertloading{
+    from {
+        opacity: 0;
+        -webkit-transform:scale(0.7);
+    }
+}
+
+
+
+/*---------------问询槽---------------*/
+#consult{
+    bottom: 190px;
+    height: 30px;
+    width: 100%;
+    text-align: center;
+}
+#confirm{
+    color: white;
+    width: 42px;
+    left: calc(50% - 58px);         /*---中间位置50% - 36px---*/
+    border-radius: 4px;
+    padding: 6px;
+    background-color: rgba(60,60,60,0.8);
+    box-shadow: rgba(0, 0, 0, 0.2) 0 0 0 1px, rgba(0, 0, 0, 0.2) 0 3px 10px;
+    -webkit-animation: consultloading 0.30s;
+}
+#confirm:hover{
+    box-shadow:
+    rgba(3, 3, 3, 1) 0 0 5px,
+    rgba(65, 51, 51, 1) 0 0 7px,
+    rgba(158, 133, 133, 1) 0 0 7px,
+    rgba(252, 252, 252, 1) 0 0 7px,
+    rgba(255, 255, 255, 1) 0 0 13px,
+    rgba(255, 255, 255, 1) 0 0 13px;
+    text-shadow:
+    rgba(3, 3, 3, 1) 0 0 5px,
+    rgba(65, 51, 51, 1) 0 0 5px,
+    rgba(158, 133, 133, 1) 0 0 6px,
+    rgba(252, 252, 252, 1) 0 0 6px,
+    rgba(255, 255, 255, 1) 0 0 7px,
+    rgba(255, 255, 255, 1) 0 0 7px;
+}
+#cancel{
+    color: white;
+    width: 42px;
+    left: calc(50% + 6px);
+    border-radius: 4px;
+    padding: 6px;
+    margin-right: 5px;
+    background-color: rgba(60,60,60,0.8);
+    box-shadow: rgba(0, 0, 0, 0.2) 0 0 0 1px, rgba(0, 0, 0, 0.2) 0 3px 10px;
+    -webkit-animation: consultloading 0.30s;
+}
+#cancel:hover{
+    box-shadow:
+    rgba(3, 3, 3, 1) 0 0 5px,
+    rgba(65, 51, 51, 1) 0 0 7px,
+    rgba(158, 133, 133, 1) 0 0 7px,
+    rgba(252, 252, 252, 1) 0 0 7px,
+    rgba(255, 255, 255, 1) 0 0 13px,
+    rgba(255, 255, 255, 1) 0 0 13px;
+    text-shadow:
+    rgba(3, 3, 3, 1) 0 0 5px,
+    rgba(65, 51, 51, 1) 0 0 5px,
+    rgba(158, 133, 133, 1) 0 0 6px,
+    rgba(252, 252, 252, 1) 0 0 6px,
+    rgba(255, 255, 255, 1) 0 0 7px,
+    rgba(255, 255, 255, 1) 0 0 7px;
+
+}
+/*---咨询槽加载动画---*/
+@-webkit-keyframes consultloading{
+    from {
+        opacity: 0;
+        -webkit-transform:scale(0.8);
+    }
+}
+
+
+
+/*---------------控制台---------------*/
+#console[console-position='rival_player']{
+    width:36%;
+    height: 5%;
+    top: 30px;
+    left: 1%;
+}
+#console[console-position='player']{
+    width:36%;
+    height: 5%;
+    bottom: 160px;
+    left: 1%;
+}
+
+
+
+/*---------------卡牌槽---------------*/
+#dock{
+    width: 100%;
+    height: 130px;
+    top:calc(100% - 160px);
+    left:0;
+    box-shadow: rgba(0, 0, 0, 0.2) 0 0 0 1px, rgba(0, 0, 0, 0.2) 0 3px 10px;
+    background-color: rgba(190,190,190,0.3);
+    border-radius: 8px;
+
+}
+#dockLeft{
+    width: calc(50% - 140px);
+    left: -15px;
+    top:calc(100% - 140px);
+    margin-left: 20px;
+    height: 127px;
+    padding: 10px;
+    white-space:nowrap;
+    display: block;
+    text-align: center;
+
+
+}
+#dockRight{
+    width: calc(50% - 140px);
+    left: calc(50% + 120px);
+    top:calc(100% - 140px);
+    margin-left: -20px;
+    height: 127px;
+    padding: 10px;
+    white-space:nowrap;
+    display: block;
+    text-align: center;
+
+}
+
+
+
+/*---------------角色卡牌槽---------------*/
+.player {
+    width: 130px;
+    height: 150px;
+    box-shadow: rgba(0, 0, 0, 0.2) 0 0 0 1px, rgba(0, 0, 0, 0.2) 0 3px 10px;
+    background-color: rgba(60,60,60,0.8);
+    border-radius: 8px;
+}
+.player[character-position='player'] {
+    top: calc(100% - 170px);
+    left: calc(50% - 65px);
+}
+.player[character-position='rival_player'] {
+    bottom: calc(100% - 170px);
+    left: calc(50% - 65px);
+}
+.player[character-position='player'][target="true"] {
+    box-shadow:
+    rgba(65, 164, 232, 0.83) 0 0 2px,
+    rgba(65, 164, 232, 0.83) 0 0 5px,
+    rgba(65, 164, 232, 0.83) 0 0 8px,
+    rgba(65, 164, 232, 0.83) 0 0 10px,
+    rgba(65, 164, 232, 0.83) 0 0 40px,
+    rgba(65, 164, 232, 0.83) 0 0 40px
+}
+.player[character-position='rival_player'][target="true"] {
+    box-shadow:
+    rgba(65, 164, 232, 0.83) 0 0 2px,
+    rgba(65, 164, 232, 0.83) 0 0 5px,
+    rgba(65, 164, 232, 0.83) 0 0 8px,
+    rgba(65, 164, 232, 0.83) 0 0 10px,
+    rgba(65, 164, 232, 0.83) 0 0 40px,
+    rgba(65, 164, 232, 0.83) 0 0 40px
+}
+
+
+/*---------------角色头像---------------*/
+.avatar{
+    width: 110px;
+    height: 130px;
+    left: 10px;
+    top: 10px;
+    border-radius: 8px;
+    background-size: cover;
+    background-position:50%;
+}
+
+
+
+/*---------------卡牌身份---------------*/
+/*---字体引用---*/
+@font-face {
+    font-family: kuangcao;
+    src: url('../font/kuangcao.ttf');
+}
+/*---字体---*/
+.player .identity>div{
+    margin: auto;
+    position: relative;
+    font-family: 'kuangcao';
+    font-size: 34px;
+    top: -25px;
+    left: 100px;
+    color: white;
+}
+/*---颜色---*/
+.player .identity[data-color="zhu"],
+div[data-nature='fire']{
+    text-shadow:
+    black 0 0 1px,
+    rgba(232, 53, 53,1) 0 0 2px,
+    rgba(232, 53, 53,1) 0 0 5px,
+    rgba(232, 53, 53,1) 0 0 10px,
+    rgba(232, 53, 53,1) 0 0 10px,
+    rgba(232, 53, 53,1) 0 0 20px,
+    rgba(232, 53, 53,1) 0 0 20px
+}
+.player .identity[data-color="fan"],
+div[data-nature='water']{
+    text-shadow:
+    rgba(57, 123, 4,1) 0 0 2px,
+    rgba(57, 123, 4,1) 0 0 5px,
+    rgba(57, 123, 4,1) 0 0 10px,
+    rgba(57, 123, 4,1) 0 0 10px,
+    rgba(57, 123, 4,1) 0 0 20px,
+    rgba(57, 123, 4,1) 0 0 20px,
+    black 0 0 1px;
+}
+
+
+
+/*---------------角色名称---------------*/
+/*---字体---*/
+.name>div{
+    position: relative;
+    font-family: sans-serif;
+    font-size: 17px;
+    top: 129px;
+    left: 38px;
+    color: lavender;
+}
+/*---颜色---*/
+.player .name[data-color="zhu"],
+div[data-nature='fire']{
+    text-shadow: black 0 0 1px,
+    rgba(232, 53, 45,1) 0 0 2px,
+    rgba(232, 53, 53,1) 0 0 5px,
+    rgba(232, 53, 53,1) 0 0 20px,
+    rgba(232, 53, 53,1) 0 0 20px
+}
+.player .name[data-color="fan"],
+div[data-nature='water']{
+    text-shadow:
+    rgba(57, 123, 4,1) 0 0 2px,
+    rgba(57, 123, 4,1) 0 0 5px,
+    rgba(57, 123, 4,1) 0 0 20px,
+    rgba(57, 123, 4,1) 0 0 20px,
+    black 0 0 1px;
+}
+
+
+
+/*---------------手牌数---------------*/
+/*---字体---*/
+.cardnum{
+    bottom:80px;
+    left:-15px;
+    width:10px;
+    padding:3px;
+    line-height:20px;
+    text-align: center;
+    border-radius:3px;
+    z-index:1;
+    color: white;
+    box-shadow: rgba(0,0,0,0.2) 1px -1px 2px inset,rgba(255,255,255,0.15) -1px 1px 5px inset;
+}
+/*---颜色---*/
+.cardnum[num-condition='high']{
+    background: rgba(85, 134, 57,1);
+    border: 1px solid rgba(39, 79, 7, 1);
+}
+.cardnum[num-condition='medium']{
+    background: rgb(206, 203, 59);
+    border: 1px solid rgb(151, 158, 26);
+}
+.cardnum[num-condition='low']{
+    background: rgb(181, 32, 58);
+    border: 1px solid rgb(108, 9, 26);
+}
+
+
+/*---------------体力值---------------*/
+/*---体力槽---*/
+.player .hp{
+    left: 90px;
+    width:18px;
+    bottom: 7px;
+    top: auto;
+    text-align: center;
+    line-height: 25px;
+    -webkit-transform:rotate(180deg);
+}
+/*---体力点---*/
+.hp>div{
+    width: 10px;
+    height: 10px;
+    margin-left: 3px;
+    margin-top: 2px;
+    position: relative;
+    border-radius: 100%;
+    box-shadow: rgba(0,0,0,0.2) 1px -1px 2px inset,rgba(255,255,255,0.15) -1px 1px 5px inset;
+    -webkit-filter: brightness(1.5);
+    transition: all 0.5s;
+}
+/*---体力点颜色---*/
+.hp[hp-condition='high']>div:not(.lost){
+    background: rgba(57, 123, 4,1);
+    border: 1px solid rgba(39, 79, 7, 1);
+}
+.hp[hp-condition='medium']>div:not(.lost){
+    background: rgb(175, 172, 54);
+    border: 1px solid rgb(81, 77, 16);
+}
+.hp[hp-condition='low']>div:not(.lost){
+    background: rgb(181, 32, 58);
+    border: 1px solid rgb(66, 21, 16);
+}
+.hp>.lost{
+    background: rgba(57, 123, 4,1);
+    border: 1px solid rgba(39, 79, 7, 1);
+    -webkit-filter: grayscale(1);
+}
+
+
+/*---------------装备槽---------------*/
+.equipBar{
+    font-family: sans-serif;
+    color: white;
+    font-size: 15px;
+    width: 86px;
+    bottom: 14px;
+    left: -6px;
+    padding-left: 7px;
+    padding-bottom: 2px;
+    padding-top: 2px;
+    border-radius: 4px;
+    -webkit-animation: equipBarloading 0.5s ease-in;
+    /*--背景颜色渐变---*/
+    background:
+    -webkit-gradient(
+            linear,
+            left top,
+            right top,
+            color-stop(0,rgba(20, 20, 20, 0.9)),
+            color-stop(0.75,rgba(20, 20, 20, 0.6)),
+            color-stop(0.92,rgba(20, 20, 20, 0.3)),
+            color-stop(1, rgba(20, 20, 20, 0.01))
+    );
+
+}
+@-webkit-keyframes equipBarloading {
+    0%{
+        opacity: 0;
+        bottom: -50px;
+    }
+    20% {
+        bottom: 14px;
+    }
+    50%{
+        bottom: 20px;
+    }
+    100% {
+        bottom: 14px;
+        opacity: 1;
+    }
+}
+
+
+
+/*---------------角色受伤---------------*/
+.player[hurted="true"]{
+    -webkit-animation: hurtedloading 0.70s;
+}
+
+@-webkit-keyframes hurtedloading{
+    22%{
+        -webkit-transform: rotateZ(-30deg);
+    }
+}
+
+/*---------------角色死亡---------------*/
+.avatar[dead="true"]{
+    -webkit-transform: rotateZ(20deg);
+    opacity: 0.5;
+
+}
+
+
+/*---------------败北---------------*/
+.lose{
+    font-family: sans-serif;
+    color: white;
+    font-size: 23px;
+    bottom: 47px;
+    left: 22px;
+    padding-left: 7px;
+    padding-right: 7px;
+    padding-bottom: 2px;
+    padding-top: 2px;
+    -webkit-transform: rotateZ(-30deg);
+    -webkit-animation: loseloading 0.30s;
+    text-shadow:
+    black 0 0 1px,
+    rgb(216, 22, 19) 0 0 5px,
+    rgb(216, 22, 19) 0 0 9px,
+    rgb(216, 22, 19) 0 0 27px,
+    rgb(216, 22, 19) 0 0 27px
+}
+
+@-webkit-keyframes loseloading{
+    from {
+        opacity: 0;
+        -webkit-transform:scale(0.8);
+    }
+}
+
+
+/*---------------出牌特效---------------*/
+/*---引导线---*/
+.line[line-position='rival_player'] {
+    background: #FFF;
+    -webkit-animation: lineloading 1s ease-in-out;
+    left: calc(50% + 1px);
+    top: 20%;
+    width: 1px;
+    z-index: -6;
+}
+.line[line-position='player'] {
+    background: #FFF;
+    -webkit-animation: lineloading 1s ease-in-out;
+    left: calc(50% + 1px);
+    bottom: 20%;
+    width: 1px;
+    z-index: -6;
+}
+.line[line-position='rival_player'] {
+    /*---relative线的方向向下---*/
+    position: relative;
+    -webkit-animation-delay: 0.02s;
+}
+.line[line-position='player'] {
+    /*---absolute线的方向向下---*/
+    position: absolute;
+    -webkit-animation-delay: 0.02s;
+}
+@-webkit-keyframes lineloading {
+    0%{
+        height: 0;
+    }
+    20% {
+        height: 6%;
+    }
+    50%{
+        height: 60%;
+    }
+    100% {
+        height: 60%;
+        opacity: 0;
+    }
+}
+
+/*---效果文字---*/
+.word{
+    font-size: 110px;
+    font-family: kuangcao;
+    top: 40%;
+    height: 40px;
+    width: 100%;
+    color: white;
+    text-align: center;
+    -webkit-animation: wordloading 0.3s;
+}
+.word[word-type='Sha'],
+.word[word-type='NanMan']{
+    text-shadow:
+    rgba(65, 51, 51, 1) 0 0 2px,
+    rgba(65, 51, 51, 1) 0 0 3px,
+    rgba(232, 53, 53,1) 0 0 5px,
+    rgba(232, 53, 53,1) 0 0 10px,
+    rgba(232, 53, 53,1) 0 0 10px,
+    rgba(232, 53, 53,1) 0 0 20px,
+    rgba(232, 53, 53,1) 0 0 20px
+
+}
+.word[word-type='Shan']{
+    text-shadow:
+    rgba(65, 51, 51, 1) 0 0 2px,
+    rgba(65, 51, 51, 1) 0 0 3px,
+    rgb(41, 108, 255) 0 0 5px,
+    rgb(41, 108, 255) 0 0 10px,
+    rgb(41, 108, 255) 0 0 10px,
+    rgb(41, 108, 255) 0 0 20px,
+    rgb(41, 108, 255) 0 0 20px
+}
+.word[word-type='Tao']{
+    text-shadow:
+    rgba(65, 51, 51, 1) 0 0 2px,
+    rgba(65, 51, 51, 1) 0 0 3px,
+    rgb(40, 215, 13) 0 0 5px,
+    rgb(40, 215, 13) 0 0 10px,
+    rgb(40, 215, 13) 0 0 10px,
+    rgb(40, 215, 13) 0 0 20px,
+    rgb(40, 215, 13) 0 0 20px
+}
+.word[word-type='JinNang']{
+    font-size: 90px;
+    text-shadow:
+    rgba(65, 51, 51, 1) 0 0 2px,
+    rgba(65, 51, 51, 1) 0 0 3px,
+    rgb(222, 216, 56) 0 0 5px,
+    rgb(222, 216, 56) 0 0 10px,
+    rgb(222, 216, 56) 0 0 10px,
+    rgb(222, 216, 56) 0 0 20px,
+    rgb(222, 216, 56) 0 0 20px
+}
+@-webkit-keyframes wordloading{
+    from{
+        opacity: 0;
+        -webkit-transform:scale(1.9);
+
+    }
+
+}
+
+
+/*---卡牌介绍---*/
+.intro{
+    color: white;
+    top: 5%;
+    width: 22%;
+    height: 30%;
+    right: 5%;         /*---中间位置50% - 36px---*/
+    border-radius: 4px;
+    padding: 6px;
+    background-color: rgba(60,60,60,0.8);
+    box-shadow: rgba(0, 0, 0, 0.2) 0 0 0 1px, rgba(0, 0, 0, 0.2) 0 3px 10px;
+    -webkit-animation: consultloading 0.30s;
+}
+.intro{
+    box-shadow:
+    rgba(3, 3, 3, 1) 0 0 5px,
+    rgba(65, 51, 51, 1) 0 0 7px,
+    rgba(158, 133, 133, 1) 0 0 7px,
+    rgba(252, 252, 252, 1) 0 0 7px,
+    rgba(255, 255, 255, 1) 0 0 13px,
+    rgba(255, 255, 255, 1) 0 0 13px;
+    text-shadow:
+    rgba(3, 3, 3, 1) 0 0 1px,
+    rgba(65, 51, 51, 1) 0 0 3px,
+    rgba(158, 133, 133, 1) 0 0 4px,
+    rgba(252, 252, 252, 1) 0 0 4px,
+    rgba(255, 255, 255, 1) 0 0 5px,
+    rgba(255, 255, 255, 1) 0 0 5px;
+}
+.introName{
+    width: 100%;
+    height: 23px;
+    left: 39%;
+}
+.introContent{
+    top:33px;
+    width: 100%;
+}
+
+
+/*---------------利用@media screen实现网页布局的自适应---------------*/
+@media screen and (min-height: 800px) {
+    #arena{height: 720px;top: calc(50% - 350px);}
+}
+@media screen and (min-width: 1280px) {
+    #arena{width: 1152px;left: calc(50% - 576px);}
+}
+@media screen and (min-width: 1600px) {
+    #arena.right{left: calc(50% - 576px);}
+    #arena.left{left: calc(50% - 576px);}
+}
+
+
+
+
+
+

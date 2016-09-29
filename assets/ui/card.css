@@ -1,0 +1,345 @@
+/*---------------卡牌---------------*/
+/*---字体引用---*/
+@font-face {
+    font-family: cardBack;
+    src: url('../font/card.ttf');
+}
+
+/*---------------发牌特效---------------*/
+.cardDealing{
+    width: 104px;
+    height: 104px;
+    left: calc(50% - 52px);
+    border-radius: 8px;
+    background: url('../theme/card.png');
+    background-size: cover;
+    z-index: -6;
+}
+.cardDealing[dealCard-position='player']{
+    bottom: 40px;
+}
+.cardDealing[dealCard-position='rival-player']{
+    top: 40px;
+}
+.cardDealing>.cardBack{
+    font-family: cardBack;
+    font-weight: 500;
+    font-size: 85px;
+    padding-top: 11px;
+    padding-left: 11px;
+}
+/*---卡牌加载特效---*/
+.cardDealing[dealing="true"][dealCard-position='player']{
+    -webkit-animation: dealingPlayer 0.49s ease-in-out;
+}
+@-webkit-keyframes dealingPlayer{
+    from {
+        bottom: 230px;
+        opacity: 0.15;
+    }
+}
+.cardDealing[dealing="true"][dealCard-position='rival-player']{
+    -webkit-animation: dealingRivalPlayer 0.49s ease-in-out;
+}
+@-webkit-keyframes dealingRivalPlayer{
+    from {
+        top: 230px;
+        opacity: 0.15;
+    }
+}
+
+
+
+/*---------------弃牌特效---------------*/
+.cardDiscarding{
+    width: 104px;
+    height: 104px;
+    left: calc(50% - 52px);
+    border-radius: 8px;
+    background: url('../theme/card.png');
+    background-size: cover;
+    z-index: -6;
+}
+.cardDiscarding>.cardBack{
+    font-family: cardBack;
+    font-weight: 500;
+    font-size: 85px;
+    padding-top: 11px;
+    padding-left: 11px;
+}
+.cardDiscarding[discardCards-position='player']{
+    bottom: 40px;
+}
+.cardDiscarding[discardCards-position='rival-player']{
+    top: 40px;
+}
+
+/*---卡牌加载特效---*/
+.cardDiscarding[discarding="true"][discardCards-position='player'] {
+    -webkit-animation: discardingPlayer 0.49s ease-out;
+}
+@-webkit-keyframes discardingPlayer{
+    to {
+        bottom: 230px;
+        opacity: 0;
+    }
+}
+.cardDiscarding[discarding="true"][discardCards-position='rival-player'] {
+    -webkit-animation: discardingRivalPlayer 0.49s ease-out;
+}
+@-webkit-keyframes discardingRivalPlayer{
+    to {
+        top: 230px;
+        opacity: 0;
+    }
+}
+
+
+
+/*---------------卡牌---------------*/
+.card{
+    width: 104px;
+    height: 104px;
+    margin-top:12px;
+    position: relative;
+    overflow-x: hidden;
+    overflow-y: visible;
+    border-radius: 8px;
+    background: url('../theme/card.png');
+    background-size: cover;
+}
+.card>.info{
+    right: 6px;
+    top: 9px;
+    white-space: nowrap;
+}
+
+.card>.intro{
+    top:85px;
+    right: 0;
+}
+.card>.cardImage{
+    width: 100%;
+    height: 100%;
+    position:absolute;
+    left:0;
+    top:0;
+    background-size: cover;
+}
+.card>.cardName{
+    font-family: sans-serif;
+    line-height: 16px;
+    top: 8px;
+    left: 7px;
+    border-radius: 4px;
+    padding-top: 2px;
+    padding-bottom: 4px;
+    padding-left: 1px;
+    padding-right: 1px;
+    border:1px solid rgb(74, 29, 1);
+    color:rgb(74, 29, 1);
+    text-shadow: none;
+    text-align:center;
+}
+
+
+/*---卡牌加载特效---*/
+.card{
+    -webkit-animation: cardloading 0.3s;
+}
+@-webkit-keyframes cardloading{
+    from {
+        opacity: 0;
+        -webkit-transform:scale(1.5);
+        margin-left: -52px;
+        margin-right: -52px;
+    }
+}
+
+.card[removed="true"]{
+
+    -webkit-animation: removed 0.28s;
+}
+
+@-webkit-keyframes removed{
+    to{
+        -webkit-transform:scale(0);
+        margin-left: -50px;
+        margin-right: -50px;
+    }
+}
+
+.dockRight>.card[selected="true"] {
+    bottom: 35px;
+}
+
+.dockLeft>.card[selected="true"] {
+    bottom: 35px;
+}
+
+
+/*---------------卡牌排列---------------*/
+
+
+
+.dockRight[card-number="2"]>.card                           /*右卡槽卡牌重叠*/
+{
+    margin-right: 30px;
+}
+.dockRight[card-number="2"]>.card[enable="true"]:hover,                    /*右卡槽鼠标悬浮*/
+.dockRight[card-number="2"]>.card[selected="true"]
+{
+    margin-left:20px;
+}
+.dockRight[card-number="3"]>.card                           /*右卡槽卡牌重叠*/
+{
+    margin-right: 15px;
+}
+.dockRight[card-number="3"]>.card[enable="true"]:hover,                    /*右卡槽鼠标悬浮*/
+.dockRight[card-number="3"]>.card[selected="true"]
+{
+    margin-left:20px;
+}
+.dockRight[card-number="4"]>.card                           /*右卡槽卡牌重叠*/
+{
+    margin-right: -15px;
+}
+.dockRight[card-number="4"]>.card[enable="true"]:hover,                    /*右卡槽鼠标悬浮*/
+.dockRight[card-number="4"]>.card[selected="true"]
+{
+    margin-left: 5px;
+    margin-right: 5px;
+}
+.dockRight[card-number="5"]>.card                           /*右卡槽卡牌重叠*/
+{
+    margin-right: -35px;
+}
+.dockRight[card-number="5"]>.card[enable="true"]:hover,                    /*右卡槽鼠标悬浮*/
+.dockRight[card-number="5"]>.card[selected="true"]
+{
+    margin-left: 5px;
+    margin-right: 5px;
+}
+.dockRight[card-number="6"]>.card                           /*右卡槽卡牌重叠*/
+{
+    margin-right: -45px;
+}
+.dockRight[card-number="6"]>.card[enable="true"]:hover,                    /*右卡槽鼠标悬浮*/
+.dockRight[card-number="6"]>.card[selected="true"]
+{
+    margin-left: 3px;
+    margin-right: 3px;
+}
+.dockRight[card-number="7"]>.card                           /*右卡槽卡牌重叠*/
+{
+    margin-right: -55px;
+}
+.dockRight[card-number="7"]>.card[enable="true"]:hover,                    /*右卡槽鼠标悬浮*/
+.dockRight[card-number="7"]>.card[selected="true"]
+{
+    margin-left: 3px;
+    margin-right: 3px;
+}
+
+
+.dockLeft[card-number="2"]>.card                            /*左卡槽卡牌重叠*/
+{
+    margin-right: 30px;
+}
+.dockLeft[card-number="2"]>.card[enable="true"]:hover,                     /*左卡槽鼠标悬浮*/
+.dockLeft[card-number="2"]>.card[selected="true"]
+{
+    margin-left:20px;
+}
+.dockLeft[card-number="3"]>.card                            /*左卡槽卡牌重叠*/
+{
+    margin-right: 15px;
+}
+.dockLeft[card-number="3"]>.card[enable="true"]:hover,                     /*左卡槽鼠标悬浮*/
+.dockLeft[card-number="3"]>.card[selected="true"]
+{
+    margin-left:20px;
+}
+.dockLeft[card-number="4"]>.card                            /*左卡槽卡牌重叠*/
+{
+    margin-right: -15px;
+}
+.dockLeft[card-number="4"]>.card[enable="true"]:hover,                     /*左卡槽鼠标悬浮*/
+.dockLeft[card-number="4"]>.card[selected="true"]
+{
+    margin-left: 5px;
+    margin-right: 5px;
+}
+.dockLeft[card-number="5"]>.card                            /*左卡槽卡牌重叠*/
+{
+    margin-right: -35px;
+}
+.dockLeft[card-number="5"]>.card[enable="true"]:hover,                     /*左卡槽鼠标悬浮*/
+.dockLeft[card-number="5"]>.card[selected="true"]
+{
+    margin-left: 5px;
+    margin-right: 5px;
+}
+.dockLeft[card-number="6"]>.card                            /*左卡槽卡牌重叠*/
+{
+    margin-right: -45px;
+}
+.dockLeft[card-number="6"]>.card[enable="true"]:hover,                     /*左卡槽鼠标悬浮*/
+.dockLeft[card-number="6"]>.card[selected="true"]
+{
+    margin-left: 3px;
+    margin-right: 3px;
+}
+.dockLeft[card-number="7"]>.card                            /*左卡槽卡牌重叠*/
+{
+    margin-right: -55px;
+}
+.dockLeft[card-number="7"]>.card[enable="true"]:hover,                     /*左卡槽鼠标悬浮*/
+.dockLeft[card-number="7"]>.card[selected="true"]
+{
+    margin-left: 3px;
+    margin-right: 3px;
+}
+.dockLeft.card:last-child                                  /*卡槽区最右一张卡牌消除特效*/
+{
+    margin-right: 0;
+    margin-left: 0;
+}
+.card[enable="true"]:hover                                                 /*鼠标悬浮阴影*/
+{
+    box-shadow:
+    black 0 0 1px,
+    rgba(232, 53, 53,1) 0 0 2px,
+    rgba(232, 53, 53,1) 0 0 5px,
+    rgba(232, 53, 53,1) 0 0 10px,
+    rgba(232, 53, 53,1) 0 0 10px,
+    rgba(232, 53, 53,1) 0 0 20px,
+    rgba(232, 53, 53,1) 0 0 20px;
+}
+.card[selected="true"][enable="true"]
+{
+    box-shadow:
+    black 0 0 1px,
+    rgba(232, 53, 53,1) 0 0 2px,
+    rgba(232, 53, 53,1) 0 0 5px,
+    rgba(232, 53, 53,1) 0 0 10px,
+    rgba(232, 53, 53,1) 0 0 10px,
+    rgba(232, 53, 53,1) 0 0 20px,
+    rgba(232, 53, 53,1) 0 0 20px;
+
+}
+.card[discard="true"]
+{
+    box-shadow:
+    black 0 0 1px,
+    rgba(232, 53, 53,1) 0 0 2px,
+    rgba(232, 53, 53,1) 0 0 5px,
+    rgba(232, 53, 53,1) 0 0 10px,
+    rgba(232, 53, 53,1) 0 0 10px,
+    rgba(232, 53, 53,1) 0 0 20px,
+    rgba(232, 53, 53,1) 0 0 20px;
+}
+.card[enable="false"]
+{
+    opacity: 0.6;
+}
